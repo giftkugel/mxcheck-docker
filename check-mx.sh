@@ -1,18 +1,18 @@
 #!/bin/bash
 
-me=$(basename "$0")
+ME=$(basename "$0")
 
 if [ "$#" -ne 1 ]; then
     echo "Illegal number of parameters. Please provide a domain to check."
-    echo "Use ./$me [domain]"
+    echo "Use ./$ME [domain]"
     exit 1
 fi
 
-container_name=mxcheck-docker
+CONTAINER_NAME=mxcheck-docker
 
-if docker inspect $container_name > /dev/null 2>&1; then
-    docker run --rm $container_name --no-prompt --service $1
+if docker inspect $CONTAINER_NAME > /dev/null 2>&1; then
+    docker run --rm $CONTAINER_NAME --no-prompt --service $1
 else
-    echo "The container $container_name does not exist. Run ./build-image.sh first!"
+    echo "The container $CONTAINER_NAME does not exist. Run ./build-image.sh first!"
     exit 2
 fi
